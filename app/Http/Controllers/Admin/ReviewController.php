@@ -1,23 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Book;
+use App\Models\Review;
 
-class BookController extends Controller
+class ReviewController extends Controller
 {
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function _construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:user,admin');
+        $this->middleware('role:admin');
     }
 
 
@@ -28,11 +23,7 @@ class BookController extends Controller
      */
     public function index()
     {
-       $books = Book::all();
-
-       return view('user.books.index',[
-         'books'=> $books
-       ]);
+        //
     }
 
     /**
@@ -64,13 +55,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = Book::findOrFail($id);
-
-        return view('user.books.show', [
-            'book'=> $book
-
-
-        ]);
+        //
     }
 
     /**
@@ -102,8 +87,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $rid)
     {
-        //
+        $review = Review::findOrFail($rid);
+
+        $review->delete();
+
+        return redirect()->route('admin.books.show', $id);
     }
 }
