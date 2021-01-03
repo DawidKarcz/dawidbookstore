@@ -76,6 +76,8 @@ class BookController extends Controller
        $book->price = $request->input('price');
        $book->save();
 
+       $request->session()->flash('success', 'Book added successfully!');
+
        return redirect()->route('admin.books.index');
     }
 
@@ -141,6 +143,8 @@ class BookController extends Controller
       $book->price = $request->input('price');
       $book->save();
 
+      $request->session()->flash('info', 'Book edited successfully!');
+
       return redirect()->route('admin.books.index');
     }
 
@@ -150,10 +154,12 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request ,$id)
     {
         $book = Book::findOrFail($id);
         $book->delete();
+
+         $request->session()->flash('danger', 'Book removed!');
 
         return redirect()->route('admin.books.index');
     }
