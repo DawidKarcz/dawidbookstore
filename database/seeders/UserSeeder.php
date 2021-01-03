@@ -41,9 +41,25 @@ class UserSeeder extends Seeder
         $user->save();
         $user->roles()->attach($role_user);
 
+        
+
         $user = new User();
         $user->name = 'Merry Nice';
         $user->email = 'merry@bookstore.ie';
+        $user->password = Hash::make('secret');
+        $user->save();
+        $user->roles()->attach($role_user);
+
+        $user = new User();
+        $user->name = 'Lisa Kelly';
+        $user->email = 'lisa@bookstore.ie';
+        $user->password = Hash::make('secret');
+        $user->save();
+        $user->roles()->attach($role_user);
+
+        $user = new User();
+        $user->name = 'Meggan Fahy';
+        $user->email = 'megan@bookstore.ie';
         $user->password = Hash::make('secret');
         $user->save();
         $user->roles()->attach($role_user);

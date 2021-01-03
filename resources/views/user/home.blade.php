@@ -15,6 +15,18 @@
                     @endif
 
                    You are logged in as an Ordinary user. <a href="{{ route('user.books.index') }}"> Books </a>
+
+                   <br>
+                   <br>
+
+                   Hi {{ Auth::user()->name }}
+                   <br>
+                   Email: {{ Auth::user()->email }}
+                   <br>
+                   Address: {{ Auth::user()->customer->address }}
+                   <br>
+                   Phone: {{ Auth::user()->customer->phone }}
+
                 </div>
             </div>
         </div>

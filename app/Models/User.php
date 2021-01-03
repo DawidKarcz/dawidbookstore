@@ -46,6 +46,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Review');
     }
 
+    public function customer()
+    {
+        return $this->hasOne('App\Models\Customer');
+    }
+
 
     public function roles()
     {
