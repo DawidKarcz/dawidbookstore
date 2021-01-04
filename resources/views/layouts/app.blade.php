@@ -82,7 +82,7 @@
                 <div class="flash-message">
                   @foreach(['danger', 'warning', 'success','info'] as $key)
                     @if(Session::has($key))
-                     <div class="alert alert-{{$key}}">{{ Session::get($key) }}
+                     <div class="flash alert alert-{{$key}}">{{ Session::get($key) }}
                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     @endif
                   @endforeach
@@ -96,6 +96,6 @@
     </div>
 </body>
 <script>
-   setTimeout(function(){ $('.alert').alert('close') }, 3000);
+   setTimeout(function(){ $('.flash').alert('close') }, 3000);
 </script>
 </html>
