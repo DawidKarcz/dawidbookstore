@@ -62,7 +62,7 @@ class BookController extends Controller
          'title' => 'required|max:191',
          'author' => 'required|max:191',
          'publisher_id' => 'required',
-         'cover' => 'file|image|dimensions:width=300,height=400',
+         'cover' => 'file|image',
          'year' => 'required|integer|min:1900',
          'isbn' => 'required|alpha_num|size:13|unique:books,isbn',
          'price' => 'required|numeric|min:0'
@@ -157,7 +157,7 @@ class BookController extends Controller
         $path = $cover->storeAs('public/covers', $filename);
         $book->cover = $filename;
       }
-  
+
       $book->title = $request->input('title');
       $book->author = $request->input('author');
       $book->publisher_id = $request->input('publisher_id');
